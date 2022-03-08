@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="text" type="text">
+    <button id="click" type="button">Click</button>
+    <p id="result"></p>
+    <script>
+        let handleClick=document.getElementById('click')
+        handleClick.addEventListener('click',()=> 
+    {   
+      
+        let text=document.getElementById('text').value
+        let textArr=text.split(' ');
+        
+        var convertArr = textArr.map(function (val) {
+
+        return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+            console.log(val)
+        });
+        
+        document.getElementById('result').innerHTML=convertArr.join(' ')
+    })
+    </script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="trainning.js" type="text/babel"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</body>
+</html>
