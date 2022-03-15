@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p{
+        font-family: "Times New Roman", Times, serif;
+    }
+</style>
+<body>
+    <ul id="post-block">
+
+    </ul>
+    <script>
+        var postApi='https://randomuser.me/api/';
+        fetch(postApi)
+            .then(function(response){     
+                return response.json();
+            })
+            .then(function(posts){
+               var result=posts.results;
+                var htmls = result.map(function(post){ 
+                    console.log(post)
+                    return `
+                    <li><p>Name:${post.name.first} ${post.name.last}</p></li>
+                    <li><p>Email:${post.email}</p></li>
+                    <li><p>Date:${post.registered.date}</p></li>
+                    <li><p>Address:${post.location.city} ${post.location.state} ${post.location.country}</p></li>
+                    <li><p>Phone:${post.phone}</p></li>
+                    `;
+                });
+                console.log(htmls)
+                var html=htmls.join('');
+                document.getElementById('post-block').innerHTML=html;
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+    </script>
+</body>
+</html>
